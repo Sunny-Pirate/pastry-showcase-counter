@@ -1,0 +1,55 @@
+= Pastry Showcase Counter
+Luca Faccio <luca@dreamlab.solutions>
+1.0, Feb 24, 2023: Pastry Showcase Counter
+:toc:
+:icons: font
+:url-repo: https://github.com/Sunny-Pirate/pastry-showcase-counter
+
+As a developer, I have always been fascinated by the potential of technology to solve problems in various industries. Recently, I have been working as an assistant manager in a gelateria, where we face a common challenge in the pastry department: the thawing of frozen products.
+
+The current method of thawing involves manually recording the name of the pastry, the amount thawed, and the date of thawing to calculate its shelf life. This process is tedious and prone to errors, resulting in wasted resources and compromised product quality. Therefore, I have decided to implement an automated solution using a web interface to simplify the thawing process and enhance the accuracy of the calculations.
+
+To achieve this, I am using Next.js, a popular framework for building React applications. Next.js allows for fast and efficient rendering of web pages and is highly customizable, making it an ideal choice for this project. Additionally, I am utilizing various libraries, such as *date-fns* and *MUI*, to enhance the functionality and aesthetics of the interface.
+
+The first step in the development process is to create a table that displays all the pastries in our inventory and their relevant information, such as their maximum defrost quantity and shelf life. This table will serve as the foundation of our automated solution, allowing us to keep track of our inventory and predict the expiration date of our pastries accurately.
+
+[plantuml]
+----
+@startuml
+title Pastry Showcase Counter - Front Fridge
+
+participant User
+participant "Front Fridge Page" as FrontFridge
+participant "PastryFrontFridgeItem" as Item
+participant "PastryFrontFridgeProduct" as Product
+database "Front Fridge Status" as Status
+
+User -> FrontFridge: Click on defrost button for a pastry product
+FrontFridge -> Item: Create a new item instance
+FrontFridge -> Item: Set the product property to the selected pastry product
+FrontFridge -> Item: Calculate the defrost date and format it
+FrontFridge -> Item: Calculate the shelf date and format it
+FrontFridge -> Status: Update the front fridge status by adding the new item
+FrontFridge -> User: Show the updated front fridge status
+
+User -> FrontFridge: Click on remove button for an item
+FrontFridge -> Item: Retrieve the item instance to remove
+FrontFridge -> Status: Update the front fridge status by removing the selected item
+FrontFridge -> User: Show the updated front fridge status
+
+@enduml
+----
+
+The diagram shows the flow of two functions, defrostAPastryItem and removeAPastryItem, in the index.tsx file. The defrostAPastryItem function is triggered when the "Defrost" button is clicked, while the removeAPastryItem function is triggered when an item in the front fridge list is clicked to be removed.
+
+The defrostAPastryItem function starts by preventing the default action of the button click event and logging a message to the console indicating that a new item is being added to the front fridge. It then gets the current date and formats it as a string using the format function from the date-fns library with Italian localization. It also calculates the expiration date by adding the number of shelf days of the pastry product to the defrosting date, and formats it as a string using the same format function.
+
+The function then creates a new object newItem containing the pastry product group, defrost date, and shelf date, and logs it to the console. It updates the front fridge status state by adding the newItem to the beginning of the previous state using the setFrontFridgeStatus function. Finally, it logs the updated frontFridgeStatus to the console.
+
+The removeAPastryItem function starts by preventing the default action of the list item click event and logging a message to the console indicating that an item is being removed from the front fridge. It updates the front fridge status state by filtering out the item clicked from the previous state using the setFrontFridgeStatus function.
+
+Next, we will implement a system for recording the amount of each pastry that has been thawed and the date of thawing. This information will be automatically added to the table, allowing us to calculate the shelf life of each pastry accurately. This process will be simplified and streamlined, eliminating the need for manual calculations and reducing the likelihood of errors.
+
+To provide a better user experience, we will also add features such as notifications to alert the front store seller when a pastry is approaching its expiration date, as well as the option to filter pastries by their defrost date and shelf life.
+
+In conclusion, by implementing an automated solution for pastry thawing, we can save time, reduce errors, and ensure the quality and freshness of our pastries. This project demonstrates my ability to develop customized solutions that meet the unique needs of different industries. Through this case study, I hope to showcase my skills and contribute to the growth and success of businesses in various sectors.
