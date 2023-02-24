@@ -1,11 +1,11 @@
-
+@import "variables";
 
 .pastryItem {
   &:hover {
     zoom: 1.04;
-    color: darkorange;
+    color: $alertColor;
     svg {
-      fill: darkorange;
+      fill: $alertColor;
     }
   }
 }
