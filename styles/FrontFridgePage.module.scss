@@ -1,0 +1,11 @@
+
+
+.pastryItem {
+  &:hover {
+    zoom: 1.04;
+    color: darkorange;
+    svg {
+      fill: darkorange;
+    }
+  }
+}
