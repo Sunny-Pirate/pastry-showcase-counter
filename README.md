@@ -17,9 +17,22 @@ git clone https://github.com/Sunny-Pirate/pastry-showcase-counter.git
 
 To run the project, follow these steps:
 
-* Start the server with 
+* Install the dependencies with npm install if you haven't already
 ```bash
-npm start
+npm install
+```
+
+### Development
+* Just run the code with node.
+```bash
+npm run dev
+```
+
+### Production
+* Create a production build and start the server with 
+```bash
+npm run build
+npm run start
 ```
 * Navigate to http://localhost:3000 in a web browser to use the application
 
